@@ -6,7 +6,7 @@
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:35:05 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/27 15:42:27 by nguillam         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:59:47 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char *str;
-	char cast;
+	char	*str;
+	char	cast;
 
 	str = (char *)s;
 	cast = (char)c;

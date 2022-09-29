@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 21:12:22 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/28 15:52:29 by nguillam         ###   ########.fr       */
+/*   Created: 2022/09/27 17:18:08 by nguillam          #+#    #+#             */
+/*   Updated: 2022/09/28 17:26:49 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*substr;
-	size_t	sublen;
+	char	*s3;
+	int		i;
+	int		j;
 
-	if (!s)
+	i = -1;
+	j = -1;
+	if (s1 == NULL & s2 == NULL)
 		return (NULL);
-	if (start > ft_strlen(s))
-	{
-		substr = malloc(sizeof(char) * 1);
-		if (!substr)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
-	}
-	sublen = ft_strlen(s + start);
-	if (sublen < len)
-		len = sublen;
-	substr = malloc(sizeof(char) * len + 1);
-	if (!substr)
+	if ((s3 = (char *)malloc(sizeof(char)
+				* (ft_strlen(s1) + ft_strlen(s2) + 1))) == NULL)
 		return (NULL);
-	ft_strlcpy(substr, s + start, len + 1);
-	return (substr);
+	while (s1 != NULL && s1[++j] != '\0')
+		s3[++i] = s1[j];
+	j = -1;
+	while (s2 != NULL && s2[++j] != '\0')
+		s3[++i] = s2[j];
+	s3[++i] = '\0';
+	return (s3);
 }

@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 11:34:31 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/29 12:52:38 by nguillam         ###   ########.fr       */
+/*   Created: 2022/09/28 17:54:48 by nguillam          #+#    #+#             */
+/*   Updated: 2022/09/28 19:22:05 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+// #include <stdlib.h>
+// #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = '\0';
-		i++;
-	}
-}
+// char	*ft_strtrim(char const *s1, char const *set)
+// {
+// }

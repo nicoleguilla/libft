@@ -6,7 +6,7 @@
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 16:22:04 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:50 by nguillam         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:47:26 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*ptr;
 
 	ptr = (void *)malloc(count * size);
-	if (ptr == NULL)
-		return (ptr);
+	if (!ptr)
+		return (NULL);
 	ft_bzero(ptr, size * count);
 	return (ptr);
 }
