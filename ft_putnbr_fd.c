@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:54:48 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/30 15:53:30 by nguillam         ###   ########.fr       */
+/*   Created: 2022/09/30 16:28:25 by nguillam          #+#    #+#             */
+/*   Updated: 2022/10/01 14:49:11 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	j;
-	char	*trim;
-
-	trim = 0;
-	if (!s1 || !set)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s1);
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	while (j && ft_strchr(set, s1[j - 1]))
-		j--;
-	trim = ft_substr(s1, i, (j - i));
-	if (trim == NULL)
-		return (NULL);
-	return (trim);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

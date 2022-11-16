@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguillam <nguillam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:54:48 by nguillam          #+#    #+#             */
-/*   Updated: 2022/09/30 15:53:30 by nguillam         ###   ########.fr       */
+/*   Created: 2022/10/26 16:06:04 by nguillam          #+#    #+#             */
+/*   Updated: 2022/10/28 17:51:02 by nguillam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
-	char	*trim;
+	t_list	*newlst;
+	t_list	*aux;
 
-	trim = 0;
-	if (!s1 || !set)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s1);
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	while (j && ft_strchr(set, s1[j - 1]))
-		j--;
-	trim = ft_substr(s1, i, (j - i));
-	if (trim == NULL)
-		return (NULL);
-	return (trim);
+	newlst = NULL;
+	aux = NULL;
+	while (lst)
+	{
+		aux = ft_lstnew(f((lst)->content));
+		if (aux == NULL)
+		{
+			ft_lstclear(&newlst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&newlst, aux);
+		lst = lst->next;
+	}
+	return (newlst);
 }
